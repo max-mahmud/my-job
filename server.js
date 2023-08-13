@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.use(
   cors({
+    origin: "https://mern-job.netlify.app",
     credentials: true,
   })
 );
