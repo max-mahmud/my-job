@@ -138,7 +138,7 @@ export const userReducer = createSlice({
     [logout.fulfilled]: (state, { payload }) => {
       state.loader = false;
       // state.successMessage = payload.message;
-      state.userInfo = payload.token;
+      state.userInfo = "";
     },
     [user_details.pending]: (state, { payload }) => {
       state.loading = true;

@@ -54,7 +54,7 @@ const ApplyJob = () => {
                     <td className="py-2 text-sm md:text-base">{i + 1}</td>
                     <td className="py-2 text-sm md:text-base">{j.name.split(" ")[0]}</td>
                     <td className="text-sm md:text-base">{j.email}</td>
-                    <td className="py-2 text-sm md:text-base">{j.resume.slice(0, 10)}.pdf</td>
+                    <td className="py-2 text-sm md:text-base">{j.resume?.slice(0, 10)}.pdf</td>
                     <td>
                       <button
                         onClick={() => dispatch(delete_apply_job(j._id))}

@@ -11,13 +11,22 @@ const Footer = () => {
         <div className="md:text-lg">
           <p>Follow us:</p>
           <div className="flex gap-4 mt-2">
-            <NavLink to="#" className="hover:text-yellow-300 transition duration-300">
+            <NavLink
+              to="https://www.linkedin.com/in/mahmud-hossain-497568284/"
+              className="hover:text-yellow-300 transition duration-300"
+            >
               Linkedin
             </NavLink>
-            <NavLink to="#" className="hover:text-yellow-300 transition duration-300">
+            <NavLink
+              to="https://github.com/max-mahmud"
+              className="hover:text-yellow-300 transition duration-300"
+            >
               Github
             </NavLink>
-            <NavLink to="#" className="hover:text-yellow-300 transition duration-300">
+            <NavLink
+              to="https://www.facebook.com/Maxmahmud24"
+              className="hover:text-yellow-300 transition duration-300"
+            >
               Facebook
             </NavLink>
           </div>

@@ -9,10 +9,10 @@ const applySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // resume: {
-  //   type: String,
-  //   required: true,
-  // },
+  resume: {
+    type: String,
+    required: true,
+  },
   user: {
     type: mongoose.ObjectId,
     ref: "users",

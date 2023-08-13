@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { AiFillDashboard, AiFillFileAdd , AiOutlineMenuFold} from "react-icons/ai";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { AiFillDashboard, AiFillFileAdd, AiOutlineMenuFold } from "react-icons/ai";
 import { BiSolidCategoryAlt, BiMessageAltError } from "react-icons/bi";
+import { MdLogout } from "react-icons/md";
 import { HiNewspaper } from "react-icons/hi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { logout } from "../../store/reducers/userReducer";
 
 const Dashboard = () => {
   const { pathname } = useLocation();
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    toast.success("logged out successfully");
+    navigate("/");
+  };
+
   return (
     <>
       <div className="relative">
@@ -61,6 +72,9 @@ const Dashboard = () => {
                   >
                     <BiMessageAltError />
                   </NavLink>
+                  <button onClick={handleLogout} className={`hover:bg-red-400 bashboard-nav`}>
+                    <MdLogout />
+                  </button>
                 </div>
               </>
             ) : (
@@ -97,6 +111,9 @@ const Dashboard = () => {
                 >
                   <BiMessageAltError /> Messages
                 </NavLink>
+                <button onClick={handleLogout} className={`hover:bg-red-400 bashboard-nav`}>
+                  <MdLogout /> Logout
+                </button>
               </div>
             )}
           </div>
@@ -140,6 +157,9 @@ const Dashboard = () => {
                 >
                   <BiMessageAltError /> Messages
                 </NavLink>
+                <button onClick={handleLogout} className={`hover:bg-red-400 bashboard-nav`}>
+                  <MdLogout /> Logout
+                </button>
               </div>
             </div>
           )}

@@ -231,24 +231,24 @@ exports.tableJobs = async (req, res, next) => {
 exports.applyForm = async (req, res) => {
   const form = new formidable.IncomingForm();
   form.parse(req, async (err, fields, files) => {
-    // let { resume } = files;
-    // newFileName = Date.now() + files?.resume[0]?.originalFilename;
+    let { resume } = files;
+    newFileName = Date.now() + files?.resume[0]?.originalFilename;
 
-    // const newPath = path.join(__dirname, "..", "uploads", newFileName);
-    // fs.copyFile(files.resume[0].filepath, newPath, (error) => {
-    //   if (error) {
-    //     console.error(error);
-    //     return res.status(500).json({ error: "Error when apply" });
-    //   } else {
-    //     return res.json({ message: "File uploaded and job apply successfully" });
-    //   }
-    // });
+    const newPath = path.join(__dirname, "..", "uploads", newFileName);
+    fs.copyFile(files.resume[0].filepath, newPath, (error) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Error when apply" });
+      } else {
+        return res.json({ message: "File uploaded and job apply successfully" });
+      }
+    });
 
     try {
       const newForm = await applyModel.create({
         name: fields.name[0],
         email: fields.email[0],
-        // resume: newFileName,
+        resume: newFileName,
         user: fields.user[0],
       });
       const jobid = fields.jobId[0];
@@ -257,7 +257,7 @@ exports.applyForm = async (req, res) => {
       }
       return res.status(201).json({ message: "applied successFull", form: newForm });
     } catch (error) {
-      return res.status(500).json({ error: "sorry not applied" });
+      // return res.status(500).json({ error: "sorry not applied" });
     }
   });
 };

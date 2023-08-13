@@ -117,7 +117,7 @@ const JobDetailsPage = () => {
                             placeholder="Your Email"
                             className="border rounded py-2 px-3 focus:outline-none focus:border-orange-500"
                           />
-                          {/* <label className="block font-medium text-gray-600">
+                          <label className="block font-medium text-gray-600">
                             Upload Resume
                             <input
                               type="file"
@@ -126,7 +126,7 @@ const JobDetailsPage = () => {
                               accept=".pdf,.doc,.docx"
                               required
                             />
-                          </label> */}
+                          </label>
                           <button
                             type="submit"
                             className="bg-orange-500 font-semibold text-white py-2 px-4 rounded hover:bg-orange-600 transition duration-300"

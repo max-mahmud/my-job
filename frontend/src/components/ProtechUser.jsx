@@ -11,6 +11,8 @@ const ProtechUser = () => {
     } else {
       return <Navigate to={"/login"} replace={true} />;
     }
+  } else {
+    return <Navigate to={"/login"} replace={true} />;
   }
 };
 

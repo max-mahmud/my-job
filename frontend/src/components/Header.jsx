@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logout } from "../store/reducers/userReducer";
 import { toast } from "react-toastify";
 import { RiMenu3Fill, RiCloseLine } from "react-icons/ri";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.user);
 
   const [open, setOpen] = useState(false);
-  const [log, setLog] = useState(false);
-  const [ok, setOk] = useState("");
 
   const handleLogout = () => {
-    // dispatch(logout());
-    localStorage.removeItem("userToken");
+    dispatch(logout());
     setOpen(false);
-    setLog(true);
     toast.success("logged out successfully");
   };
-
-  useEffect(() => {
-    if (localStorage.getItem("userToken")) {
-      setOk(true);
-    } else {
-      setOk(false);
-    }
-  }, [log]);
 
   return (
     <div className="bg-gradient-to-r from-orange-600 to-orange-800 py-4 text-white">
@@ -54,9 +44,9 @@ const Header = () => {
           >
             FAQ
           </NavLink>
-          {ok ? (
+          {userInfo ? (
             <>
-              {userInfo?.role === 1 ? (
+              {userInfo.role === 1 ? (
                 <>
                   <NavLink
                     className="text-sm py-2 px-2 font-medium hover:text-yellow-300 transition duration-300"
