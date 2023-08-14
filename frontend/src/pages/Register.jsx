@@ -45,7 +45,7 @@ const Register = () => {
   return (
     <>
       <Header />
-      <div className="container mx-auto min-h-screen bg-slate-200 flex justify-center items-center">
+      <div className="container mx-auto min-h-screen bg-slate-100 flex justify-center items-center">
         <div className="bg-slate-300 w-[350px] mx-auto">
           <h3 className="text-center mt-3 text-2xl font-semibold text-green-500">Register Here!</h3>
           <form className="p-4" onSubmit={handleSubmit}>

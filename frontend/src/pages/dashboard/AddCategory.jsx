@@ -44,7 +44,7 @@ const AddCategory = () => {
   }, [successMessage, errorMessage, dispatch]);
 
   return (
-    <div className="bg-white relative flex justify-center items-center gap-10 flex-col text-slate-600 min-h-[77vh] m-5 p-4">
+    <div className="bg-white relative flex justify-center items-center gap-10 flex-col text-slate-600 min-h-[77vh] my-5 mx-2 p-1">
       <div>
         <form onSubmit={handleCategory} className="flex items-center flex-col gap-4">
           <div className="flex items-center justify-center gap-2 md:flex-row flex-col">
@@ -70,7 +70,7 @@ const AddCategory = () => {
           </div>
         ) : (
           <>
-            <table className="bg-white w-11/12 mx-auto text-center border mt-3">
+            <table className="bg-white w-full mx-auto text-center border mt-3">
               <thead className=" bg-slate-300 py-2">
                 <tr className="border">
                   <th className="py-2">ID</th>

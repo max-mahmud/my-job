@@ -49,7 +49,7 @@ const Profile = () => {
     <>
       <Header />
       <div className="container min-h-screen mx-auto">
-        <div className="flex justify-between gap-5 mt-4">
+        <div className="flex md-lg:flex-row flex-col justify-between gap-5 mt-4">
           <div className="bg-slate-200 p-4 w-full flex-col">
             <h4 className="text-slate-600 font-medium text-xl my-2 ">
               <span>Name:</span> {loading ? "Loading..." : <>{userDetails?.name}</>}

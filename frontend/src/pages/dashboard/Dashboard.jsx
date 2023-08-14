@@ -72,7 +72,7 @@ const Dashboard = () => {
                   >
                     <BiMessageAltError />
                   </NavLink>
-                  <button onClick={handleLogout} className={`hover:bg-red-400 bashboard-nav`}>
+                  <button onClick={handleLogout} className={`hover:bg-red-400 bashboard-nav-responsive`}>
                     <MdLogout />
                   </button>
                 </div>

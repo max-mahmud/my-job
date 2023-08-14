@@ -26,7 +26,7 @@ const SearchBox = ({ setKeyword }) => {
         />
         <button
           onClick={handleSubmit}
-          className="py-2 px-10 bg-orange-500 text-slate-100 font-semibold "
+          className="py-2 md:px-10 px-5 bg-orange-500 text-slate-100 font-semibold "
         >
           Search
         </button>
