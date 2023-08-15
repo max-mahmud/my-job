@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { get_category } from "../../store/reducers/categoryReducer";
 import { add_jobs, messageClear } from "../../store/reducers/JobReducer";
 import { toast } from "react-toastify";
-import { Navigate, useNavigate } from "react-router-dom";
-import Loading from "../../components/Loading";
+import {  useNavigate } from "react-router-dom";
 
 const AddJob = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, successMessage, errorMessage } = useSelector((state) => state.job);
+  const {  successMessage, errorMessage } = useSelector((state) => state.job);
   const { categorys } = useSelector((state) => state.cate);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -130,16 +129,16 @@ const AddJob = () => {
               </label>
               <select
                 onChange={(e) => setCat(e.target.value)}
-                className="w-full outline-none text-sm bg-slate-100 py-2 px-4 rounded-md focus:bg-gray-100"
+                className="w-full outline-none text-sm bg-slate-200 py-2 px-4 rounded-md focus:bg-gray-200"
                 name="category"
                 id="category"
               >
-                <option className="bg-orange-300" value="">
+                <option className="bg-slate-400" value="">
                   Select Category
                 </option>
                 {categorys?.map((c, i) => {
                   return (
-                    <option className="bg-orange-300" value={c._id} key={i + 1}>
+                    <option className="bg-slate-400 " value={c._id} key={i + 1}>
                       {c.name}
                     </option>
                   );

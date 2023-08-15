@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { AiFillDashboard, AiFillFileAdd, AiOutlineMenuFold } from "react-icons/ai";
-import { BiSolidCategoryAlt, BiMessageAltError } from "react-icons/bi";
+import { AiOutlineMenuFold } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
-import { HiNewspaper } from "react-icons/hi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { logout } from "../../store/reducers/userReducer";
+import { NavData } from "../../components/NavData";
 
 const Dashboard = () => {
   const { pathname } = useLocation();
@@ -29,49 +28,24 @@ const Dashboard = () => {
               open ? "w-1/12 " : "w-[20%] "
             } hidden  bg-gray-600 md-lg:flex justify-center z-0 min-h-[100vh]`}
           >
+            {/* for learge device */}
             {open ? (
               <>
                 <div className=" md-lg:flex hidden  flex-col gap-4 items-center justify-center text-center ">
-                  <NavLink
-                    className={`${
-                      pathname === "/dashboard" ? "bg-orange-300  " : " "
-                    }  bashboard-nav-responsive`}
-                    to="/dashboard"
-                  >
-                    <AiFillDashboard />
-                  </NavLink>
-                  <NavLink
-                    className={`${
-                      pathname === "/dashboard/addjob" ? "bg-orange-300  " : " "
-                    } bashboard-nav-responsive`}
-                    to="/dashboard/addjob"
-                  >
-                    <AiFillFileAdd />
-                  </NavLink>
-                  <NavLink
-                    className={`${
-                      pathname === "/dashboard/add-category" ? "bg-orange-300  " : " "
-                    } bashboard-nav-responsive`}
-                    to="/dashboard/add-category"
-                  >
-                    <BiSolidCategoryAlt />
-                  </NavLink>
-                  <NavLink
-                    className={`${
-                      pathname === "/dashboard/applyjob" ? "bg-orange-300  " : " "
-                    } bashboard-nav-responsive`}
-                    to="/dashboard/applyjob"
-                  >
-                    <HiNewspaper />
-                  </NavLink>
-                  <NavLink
-                    className={`${
-                      pathname === "/dashboard/message" ? "bg-orange-300  " : " "
-                    } bashboard-nav-responsive`}
-                    to="/dashboard/message"
-                  >
-                    <BiMessageAltError />
-                  </NavLink>
+                  {NavData.map((t, i) => {
+                    return (
+                      <>
+                        <NavLink
+                          className={`${
+                            pathname === `${t.path}` ? "bg-orange-300  " : " "
+                          }  bashboard-nav-responsive`}
+                          to={`${t.path}`}
+                        >
+                          {t.icon}
+                        </NavLink>
+                      </>
+                    );
+                  })}
                   <button onClick={handleLogout} className={`hover:bg-red-400 bashboard-nav-responsive`}>
                     <MdLogout />
                   </button>
@@ -79,84 +53,40 @@ const Dashboard = () => {
               </>
             ) : (
               <div className=" flex flex-col gap-4 items-center justify-center text-center ">
-                <NavLink
-                  className={`${pathname === "/dashboard" ? "bg-orange-300  " : " "}  bashboard-nav`}
-                  to="/dashboard"
-                >
-                  <AiFillDashboard /> Dashboard
-                </NavLink>
-                <NavLink
-                  className={`${pathname === "/dashboard/addjob" ? "bg-orange-300  " : " "}  bashboard-nav`}
-                  to="/dashboard/addjob"
-                >
-                  <AiFillFileAdd /> Add Job
-                </NavLink>
-                <NavLink
-                  className={`${
-                    pathname === "/dashboard/add-category" ? "bg-orange-300  " : " "
-                  } bashboard-nav`}
-                  to="/dashboard/add-category"
-                >
-                  <BiSolidCategoryAlt /> Add Category
-                </NavLink>
-                <NavLink
-                  className={`${pathname === "/dashboard/applyjob" ? "bg-orange-300  " : " "} bashboard-nav`}
-                  to="/dashboard/applyjob"
-                >
-                  <HiNewspaper /> Apply Job
-                </NavLink>
-                <NavLink
-                  className={`${pathname === "/dashboard/message" ? "bg-orange-300  " : " "} bashboard-nav`}
-                  to="/dashboard/message"
-                >
-                  <BiMessageAltError /> Messages
-                </NavLink>
+                {NavData.map((t, i) => {
+                  return (
+                    <>
+                      <NavLink
+                        className={`${pathname === `${t.path}` ? "bg-orange-300  " : " "}  bashboard-nav`}
+                        to={`${t.path}`}
+                      >
+                        {t.icon} {t.title}
+                      </NavLink>
+                    </>
+                  );
+                })}
                 <button onClick={handleLogout} className={`hover:bg-red-400 bashboard-nav`}>
                   <MdLogout /> Logout
                 </button>
               </div>
             )}
           </div>
+          {/* for mrdium device responsive */}
           {open && (
             <div className="md-lg:hidden z-50 absolute top-[63px] py-5 left-0 right-0 bg-gray-600  flex">
               <div className="w-full flex flex-col gap-4 items-center justify-center text-center ">
-                <NavLink
-                  onClick={() => setOpen(false)}
-                  className={`${pathname === "/dashboard" ? "bg-orange-300  " : " "}  bashboard-nav`}
-                  to="/dashboard"
-                >
-                  <AiFillDashboard /> Dashboard
-                </NavLink>
-                <NavLink
-                  onClick={() => setOpen(false)}
-                  className={`${pathname === "/dashboard/addjob" ? "bg-orange-300  " : " "}  bashboard-nav`}
-                  to="/dashboard/addjob"
-                >
-                  <AiFillFileAdd /> Add Job
-                </NavLink>
-                <NavLink
-                  onClick={() => setOpen(false)}
-                  className={`${
-                    pathname === "/dashboard/add-category" ? "bg-orange-300  " : " "
-                  } bashboard-nav`}
-                  to="/dashboard/add-category"
-                >
-                  <BiSolidCategoryAlt /> Add Category
-                </NavLink>
-                <NavLink
-                  onClick={() => setOpen(false)}
-                  className={`${pathname === "/dashboard/applyjob" ? "bg-orange-300  " : " "} bashboard-nav`}
-                  to="/dashboard/applyjob"
-                >
-                  <HiNewspaper /> Apply Job
-                </NavLink>
-                <NavLink
-                  onClick={() => setOpen(false)}
-                  className={`${pathname === "/dashboard/message" ? "bg-orange-300  " : " "} bashboard-nav`}
-                  to="/dashboard/message"
-                >
-                  <BiMessageAltError /> Messages
-                </NavLink>
+                {NavData.map((t, i) => {
+                  return (
+                    <>
+                      <NavLink
+                        className={`${pathname === `${t.path}` ? "bg-orange-300  " : " "}  bashboard-nav`}
+                        to={`${t.path}`}
+                      >
+                        {t.icon} {t.title}
+                      </NavLink>
+                    </>
+                  );
+                })}
                 <button onClick={handleLogout} className={`hover:bg-red-400 bashboard-nav`}>
                   <MdLogout /> Logout
                 </button>

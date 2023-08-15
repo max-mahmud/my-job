@@ -31,37 +31,47 @@ const Message = () => {
           <Loading />
         </div>
       ) : (
-        <table className="bg-white w-11/12 mx-auto text-center border mt-3">
-          <thead className=" bg-slate-300 py-2">
-            <tr className="border">
-              <th className="py-2 text-sm md:text-base">ID</th>
-              <th className="py-2 text-sm md:text-base">Name</th>
-              <th className="py-2 text-sm md:text-base sm:block hidden">Email</th>
-              <th className="py-2 text-sm md:text-base">Message</th>
-              <th className="py-2 text-sm md:text-base">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {msgs?.map((j, i) => {
-              return (
-                <tr className="bg-slate-50 hover:bg-slate-300" key={i + 1}>
-                  <td className="py-2 text-sm md:text-base">{i + 1}</td>
-                  <td className="py-2 text-sm md:text-base">{j.name.split(" ")[0]}</td>
-                  <td className="py-2 text-sm md:text-base sm:block hidden">{j.email}</td>
-                  <td className="py-2 text-xs md:text-base">{j.message.slice(0, 30)}..</td>
-                  <td>
-                    <button
-                      onClick={() => dispatch(delete_msg(j._id))}
-                      className="p-2 text-white hover:bg-red-600 text-sm md-lg:text-lg bg-red-500"
-                    >
-                      <RiDeleteBin5Fill />
-                    </button>
-                  </td>
+        <>
+          {msgs?.length > 0 ? (
+            <table className="bg-white w-11/12 mx-auto text-center border mt-3">
+              <thead className=" bg-slate-300 py-2">
+                <tr className="border">
+                  <th className="py-2 text-sm md:text-base">ID</th>
+                  <th className="py-2 text-sm md:text-base">Name</th>
+                  <th className="py-2 text-sm md:text-base sm:block hidden">Email</th>
+                  <th className="py-2 text-sm md:text-base">Message</th>
+                  <th className="py-2 text-sm md:text-base">Action</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+                <>
+                  {msgs?.map((j, i) => {
+                    return (
+                      <tr className="bg-slate-50 hover:bg-slate-300" key={i + 1}>
+                        <td className="py-2 text-sm md:text-base">{i + 1}</td>
+                        <td className="py-2 text-sm md:text-base">{j.name.split(" ")[0]}</td>
+                        <td className="py-2 text-sm md:text-base sm:block hidden">{j.email}</td>
+                        <td className="py-2 text-xs md:text-base">{j.message.slice(0, 30)}..</td>
+                        <td>
+                          <button
+                            onClick={() => dispatch(delete_msg(j._id))}
+                            className="p-2 text-white hover:bg-red-600 text-sm md-lg:text-lg bg-red-500"
+                          >
+                            <RiDeleteBin5Fill />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </>
+              </tbody>
+            </table>
+          ) : (
+            <>
+              <h3 className="text-4xl text-slate-500 font-bold text-center mt-10 h-full w-full">No Data Found</h3>
+            </>
+          )}
+        </>
       )}
     </div>
   );

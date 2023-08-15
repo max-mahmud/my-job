@@ -1,20 +1,20 @@
 import React from "react";
 import { MdAddLocationAlt } from "react-icons/md";
 
-const Filter = ({ handleChange, handleChangeCategory, categorys, uniqLocations ,setSort}) => {
+const Filter = ({ handleChange, handleChangeCategory, categorys, uniqLocations, setSort }) => {
   return (
     <>
       <div className="bg-white p-4 border">
         <h3 className="font-semibold text-xl text-orange-500 mb-4">Find Job By Category</h3>
         <select
-          className="w-full p-2 rounded border focus:outline-none focus:ring-1 focus:ring-orange-500 appearance-none hover:bg-slate-100 text-slate-500 font-medium"
+          className="w-full outline-none text-sm bg-slate-100 py-2 px-4 rounded-md focus:bg-gray-100"
           onChange={handleChangeCategory}
         >
-          <option value="" className=" text-slate-500 text-sm font-medium ">
+          <option value="" className=" bg-slate-400 text-sm font-medium ">
             All Category
           </option>
           {categorys?.map((c, i) => (
-            <option className=" text-slate-500 text-sm font-medium capitalize" key={i + 1} value={c._id}>
+            <option className=" bg-slate-400 text-sm font-medium capitalize" key={i + 1} value={c._id}>
               {c.name}
             </option>
           ))}
@@ -50,16 +50,16 @@ const Filter = ({ handleChange, handleChangeCategory, categorys, uniqLocations ,
         <h3 className="font-semibold text-xl text-orange-500 mb-4">Sort By Date</h3>
 
         <select
-          className="w-full p-2 rounded border focus:outline-none focus:ring-2 focus:ring-orange-500 appearance-none hover:bg-slate-100 text-slate-500 font-medium capitalize"
+          className="w-full outline-none text-sm bg-slate-100 py-2 px-4 rounded-md focus:bg-gray-100 capitalize"
           onClick={(e) => setSort(e.target.value)}
         >
-          <option className="font-medium text-sm" value="">
+          <option className="bg-slate-400 font-medium text-sm" value="">
             Sort Now
           </option>
-          <option className="font-medium text-sm" value="new">
+          <option className=" bg-slate-400 font-medium text-sm" value="new">
             New to Old
           </option>
-          <option className="font-medium text-sm" value="old">
+          <option className="bg-slate-400 font-medium text-sm" value="old">
             Old to New
           </option>
         </select>
